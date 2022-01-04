@@ -1,0 +1,25 @@
+﻿@using React.Models;
+@model Person
+
+            <div class="@Model.RowClass row">
+                <div class="col-lg-1">@(Model.ItemIndex + 1)</div>
+                <div class="col-lg-3"><a href="/Home/EditPerson?id=@Model.ID">@Model.Name</a></div>
+                <div class="col-lg-2">@Model.City</div>
+                <div class="col-lg-2">@Model.PhoneNumber</div>
+                <div class="col-lg-3">@Model.Languages</div>
+                <div class="col-lg-1">
+                    @switch (Model.Column5Mode)
+                    {
+                        default:
+                        case Column5Modes.RemoveLink:
+                            if (User.IsInRole("Admin"))
+                            {
+                    <a href="/Home/DeletePerson?id=@Model.ID">Delete</a>
+                            }
+                            break;
+                        case Column5Modes.DisplayID:
+                    <span>@Model.ID</span>
+                            break;
+                    }
+                </div>
+            </div>

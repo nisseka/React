@@ -1,0 +1,12 @@
+﻿@using React.Models;
+@using React.Data;
+@model AddCountryInputModel
+
+<form class="form" id="AddCountryForm" asp-controller="Countries" asp-action="AddCountry" method="post">
+    <label>Add Country:</label>
+    <label asp-for="Name"></label>
+    <input class="formInputField" asp-for="Name" required />
+    <label asp-for="CountryCode"></label>
+    <input class="formInputField" asp-for="CountryCode" required/>
+    <input class="formButton" type="submit" value="Add" />
+</form>

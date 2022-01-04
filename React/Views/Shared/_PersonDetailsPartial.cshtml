@@ -1,0 +1,51 @@
+﻿@using React.Models;
+@model Person
+
+<div class="container">
+    @if (Model != null)
+    {
+        <div class="row">
+            <div class="col-lg-12">
+                <h3>Person details:</h3>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-2 tableHeader">Name:</div>
+            <div class="col-lg-3">@Model.Name</div>
+            <div class="col-lg-7">&nbsp;</div>
+        </div>
+        <div class="row">
+            <div class="col-lg-2 tableHeader">City:</div>
+            <div class="col-lg-3">@Model.City</div>
+            <div class="col-lg-7">&nbsp;</div>
+        </div>
+        <div class="row">
+            <div class="col-lg-2 tableHeader">PhoneNumber:</div>
+            <div class="col-lg-3">@Model.PhoneNumber</div>
+            <div class="col-lg-7">&nbsp;</div>
+        </div>
+        <div class="row">
+            <div class="col-lg-2 tableHeader">Languages:</div>
+            <div class="col-lg-3">@Model.Languages</div>
+            <div class="col-lg-7">&nbsp;</div>
+        </div>
+        <div class="row">
+            <div class="col-lg-2 tableHeader">Nr:</div>
+            <div class="col-lg-3">@(Model.ItemIndex + 1)</div>
+            <div class="col-lg-7">&nbsp;</div>
+        </div>
+        <div class="row">
+            <div class="col-lg-2 tableHeader">ID:</div>
+            <div class="col-lg-3">@Model.ID</div>
+            <div class="col-lg-7">&nbsp;</div>
+        </div>
+    }
+    else
+    {
+        <div class="row">
+            <div class="col-lg-12">
+                <h2 class="ErrorMessage">No person data!</h2>
+            </div>
+        </div>
+    }
+</div>

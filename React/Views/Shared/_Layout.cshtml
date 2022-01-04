@@ -1,0 +1,68 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="~/lib/bootstrap/css/bootstrap.css" />
+    <link rel="stylesheet" href="/StyleSheet.css" />
+    @{
+        if (ViewBag.Title != null)
+        {
+            <title>@ViewBag.Title</title>
+        }
+    }
+</head>
+<body>
+    <header>
+        <h3 id="TopLeftHeaderCell"><a href="/Home/">Home</a></h3>
+        <nav class="headerNav">
+            <ul class="headerUl">
+@{
+    // Build the links menu:
+            Dictionary<string, string> links = new Dictionary<string, string>();
+
+            if (User.Identity.IsAuthenticated)
+            {
+                links.Add("AJAX Mode", "/AJAX/");
+                links.Add("React", "/React/");
+                if (User.IsInRole("Admin"))
+		        {
+                    links.Add("Cities", "/Cities/");
+                    links.Add("Countries", "/Countries/");
+                    links.Add("Languages", "/Languages/");
+                    links.Add("Users", "/Users/");
+                }
+
+                links.Add("People", "/Home/People");
+            }
+
+            foreach (var item in links)
+            {
+                <li class="headerLi nav"><a href="@item.Value">@item.Key</a></li>
+            }
+}
+            </ul>
+        </nav>
+        <div id="TopRightHeaderCell">
+            <partial name="_LoginPartial" />
+        </div>
+    </header>
+
+    <main class="main">
+@{
+    if (ViewBag.Title != null)
+    {
+        <h2 class="Title">@ViewBag.Title</h2>
+    }
+    @RenderBody();
+}
+    </main>
+    <footer>
+        <p>&copy; @DateTime.Now.Year Stefan Sundbeck</p>
+    </footer>
+    <script src="~/site.js"></script>
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+    <script src="~/lib/bootstrap/js/bootstrap.js"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

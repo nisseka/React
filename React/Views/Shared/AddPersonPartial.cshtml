@@ -1,0 +1,32 @@
+﻿@using React.Models;
+@using React.Data;
+@model AddPersonInputModel
+
+<form class="form" id="AddPersonForm" asp-controller="Home" asp-action="AddPerson" method="post">
+    <label asp-for="Name"></label>
+    <input class="formInputField" asp-for="Name" required />
+    <label asp-for="PhoneNumber"></label>
+    <input class="formInputField" asp-for="PhoneNumber" />
+    <label asp-for="CityId"></label>
+    <select asp-for="CityId" class="formInputField">
+@{
+    // Build the city drop-down list from database table 'Cities':
+    foreach (DBCity city in ViewBag.Cities)
+    {
+        <option value="@city.Id">@city.Name</option>
+    }
+}
+    </select>
+    <label asp-for="Languages"></label>
+    <select asp-for="Languages" class="formInputField" multiple size="3">
+@{
+    // Build the language drop-down list from database table 'Languages':
+    foreach (DBLanguage language in ViewBag.Languages)
+    {
+        <option value="@language.Id">@language.Name</option>
+    }
+}
+    </select>
+    <input class="formButton" type="submit" value="Add" />
+</form>
+

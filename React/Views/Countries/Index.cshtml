@@ -1,0 +1,52 @@
+﻿@model CountriesViewModel;
+
+@{
+    ViewData["Title"] = "Countries";
+
+    var addCountryInputModel = new AddCountryInputModel();    // Create an emtpy input-model for use in the partial view AddCountry
+}
+        <p></p>
+        <partial name="AddCountryPartial" model="addCountryInputModel" />
+        <p></p>
+
+        <div class="container my-container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div>&nbsp;</div>
+                </div>
+            </div>
+            <div class="tableHeader row">
+                <div class="col-lg-1">Nr.</div>
+                <div class="col-lg-2">Name:</div>
+                <div class="col-lg-2">Country Code:</div>
+                <div class="col-lg-6">Cities:</div>
+                <div class="col-lg-1">&nbsp;</div>
+            </div>
+@{
+        string rowclass;
+
+        int count = Model.Countries.Count;
+        for (int i = 0; i < count; i++)
+        {
+            var item = Model.Countries[i];
+
+            int rowClassIndex = (i % 2);
+            rowclass = Model.TableRowClasses[rowClassIndex];
+            <div class="@rowclass row">
+                <div class="col-lg-1">@(i + 1)</div>
+                <div class="col-lg-2">@item.Name</div>
+                <div class="col-lg-2">@item.CountryCode</div>
+                <div class="col-lg-6">@item.CitiesString</div>
+                <div class="col-lg-1">
+                    <a href="/Countries/DeleteCountry?id=@item.Id">Delete</a>
+                </div>
+            </div> 
+        }
+}
+            <div class="tableFooter row">
+                <div class="col-lg-10">&nbsp;</div>
+                <div class="col-lg-2">@count item(s)</div>
+            </div>
+        </div>
+
+

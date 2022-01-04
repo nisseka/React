@@ -1,0 +1,30 @@
+﻿@model PeopleViewModel
+
+@{
+    ViewData["Title"] = "AJAX Mode";
+}
+
+        <div>
+            <div id="ActionButtons" class="container">
+                <div class="row">
+                    <div class="col-lg-2">
+                        <input type="button" class="formButton" onclick="GetPeopleList()" value="View People" />
+                    </div>
+                    <div class="col-lg-10">
+                        <label for="PersonIndexInput">Person #:</label>
+                        <input id="PersonIndexInput" class="formInputField" type="number" value="1" min="1" max="@Model.People.Count" />
+                        <input type="button" class="formButton" onclick="GetPerson()" value="Person Details" />
+                        @if (User.IsInRole("Admin"))
+                        {
+                         <input type="button" class="formButton" onclick="DeletePerson()" value="Delete Person" />
+                        }
+                    </div>
+                </div>
+            </div>
+
+            <div id="OutputElement"></div>
+
+            <div class="container">
+                <h3 id="Message">&nbsp;</h3>
+            </div>
+        </div>

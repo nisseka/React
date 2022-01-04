@@ -1,0 +1,8 @@
+﻿@model AddLanguageInputModel
+
+<form class="form" id="AddCityForm" asp-controller="Languages" asp-action="AddLanguage" method="post">
+    <label>Add Language:</label>
+    <label asp-for="Name"></label>
+    <input class="formInputField" asp-for="Name" required />
+    <input class="formButton" type="submit" value="Add" />
+</form>

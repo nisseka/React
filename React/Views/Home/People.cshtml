@@ -1,0 +1,61 @@
+﻿@model PeopleViewModel
+
+@{
+    ViewData["Title"] = "People";
+
+    var adddPersonInputModel = new AddPersonInputModel();    // Create an emtpy view-model for use in the partial view AddPerson
+
+}
+<form class="form" id="SearchForm" asp-action="People" asp-controller="Home" method="get">
+    <label for="searchFor">Search for:</label>
+    <input class="formInputField" type="text" id="searchFor" name="searchFor" />
+    <input type="checkbox" id="caseSensitive" name="caseSensitive" value="true" />
+    <label for="caseSensitive">Case Sensitive</label>
+    <input class="formButton" type="submit" value="Search" />
+</form>
+<p></p>
+<partial name="AddPersonPartial" model="adddPersonInputModel" />
+<p></p>
+<div class="container my-container">
+    <div class="row">
+        <div class="col-lg-12">
+            @if (Model.SearchFor != null)
+            {
+                string str = $"Filter: '{Model.SearchFor}'";
+                if (Model.CaseSensitiveSearch)
+                {
+                    str += " (Case Sensitive)";
+                }
+                <div>
+                    @Html.Raw(str)
+                <input type="button" name="ClearFilterButton" value="Clear" class="formButton" onclick="GoToURL('/')" />
+            </div>
+        } else
+        {
+            <div>@Html.Raw("&nbsp;")</div>
+        }
+        </div>
+    </div>
+    <div class="tableHeader row">
+        <div class="col-lg-1">Nr.</div>
+        <div class="col-lg-3">Name: (click name to edit)</div>
+        <div class="col-lg-2">City:</div>
+        <div class="col-lg-2">PhoneNumber:</div>
+        <div class="col-lg-3">Languages:</div>
+        <div class="col-lg-1">&nbsp;</div>
+    </div>
+    @{
+        int count = Model.PeopleToDisplay.Count;
+        for (int i = 0; i < count; i++)
+        {
+            var item = Model.PeopleToDisplay[i];
+
+            <partial name="_PersonViewPartial" model="item" />
+        }
+    }
+    <div class="tableFooter row">
+        <div class="col-lg-10">&nbsp;</div>
+        <div class="col-lg-2">@count item(s)</div>
+    </div>
+</div>
+

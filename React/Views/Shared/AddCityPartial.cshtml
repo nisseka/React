@@ -1,0 +1,18 @@
+﻿@model AddCityInputModel
+
+<form class="form" id="AddCityForm" asp-controller="Cities" asp-action="AddCity" method="post">
+    <label>Add City:</label>
+    <label asp-for="Name"></label>
+    <input class="formInputField" asp-for="Name" required />
+    <label asp-for="CountryId"></label>
+    <select asp-for="CountryId" class="formInputField">
+@{
+    // Build the country drop-down list from database table 'Countries':
+    foreach (Country country in ViewBag.Countries)
+    {
+        <option value="@country.Id">@country.Name</option>
+    }
+}
+    </select>
+    <input class="formButton" type="submit" value="Add" />
+</form>

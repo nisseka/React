@@ -1,0 +1,48 @@
+﻿@model EditPersonInputModel
+
+<form class="form" id="EditPersonForm" asp-controller="Home" asp-action="EditPerson" method="post">
+    <input asp-for="Id" type="hidden" value="@Model.Id" />
+    <label asp-for="Name"></label>
+    <input class="formInputField" asp-for="Name" required />
+    <label asp-for="PhoneNumber"></label>
+    <input class="formInputField" asp-for="PhoneNumber" />
+    <label asp-for="CityId"></label>
+    <select asp-for="CityId" class="formInputField">
+        @{
+            string selectedCity = ViewBag.SelectedCity;
+
+            // Build the city drop-down list from database table 'Cities':
+            foreach (DBCity city in ViewBag.Cities)
+            {
+                if (selectedCity != null && selectedCity == city.Name)
+                {
+                    <option value="@city.Id" selected>@city.Name</option>
+                }
+                else
+                {
+                    <option value="@city.Id">@city.Name</option>
+                }
+            }
+        }
+    </select>
+    <label asp-for="Languages"></label>
+    <select asp-for="Languages" class="formInputField" multiple size="5">
+        @{
+            string languages = ViewBag.SelectedLanguages;
+            // Build the language drop-down list from database table 'Languages':
+            foreach (DBLanguage language in ViewBag.Languages)
+            {
+                if (languages != null && languages.Contains(language.Name))
+                {
+                    <option value="@language.Id" selected>@language.Name</option>
+                }
+                else
+                {
+                    <option value="@language.Id">@language.Name</option>
+                }
+            }
+        }
+    </select>
+    <input class="formButton" type="submit" value="Save" />
+    <button class="formButton" type="button" onclick="history.back()">Cancel</button>
+</form>

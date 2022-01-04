@@ -1,0 +1,51 @@
+﻿@model LanguagesViewModel
+
+@{
+    ViewData["Title"] = "Languages";
+
+    var addLanguageInputModel = new AddLanguageInputModel();    // Create an emtpy input-model for use in the partial view AddLanguage
+
+}
+        <p></p>
+        <partial name="AddLanguagePartial" model="addLanguageInputModel" />
+        <p></p>
+
+        <div class="container my-container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div>&nbsp;</div>
+                </div>
+            </div>
+            <div class="tableHeader row">
+                <div class="col-lg-1">Nr.</div>
+                <div class="col-lg-3">Name:</div>
+                <div class="col-lg-7">People:</div>
+                <div class="col-lg-1">&nbsp;</div>
+            </div>
+            @{
+                string rowclass;
+
+                int count = Model.Languages.Count;
+                for (int i = 0; i < count; i++)
+                {
+                    var item = Model.Languages[i];
+
+                    int rowClassIndex = (i % 2);
+                    rowclass = Model.TableRowClasses[rowClassIndex];
+                    <div class="@rowclass row">
+                        <div class="col-lg-1">@(i + 1)</div>
+                        <div class="col-lg-3">@item.Name</div>
+                        <div class="col-lg-7">@item.PeopleString</div>
+                        <div class="col-lg-1">
+                            <a href="/Languages/DeleteLanguage?id=@item.Id">Delete</a>
+                        </div>
+                    </div>
+                }
+            }
+            <div class="tableFooter row">
+                <div class="col-lg-10">&nbsp;</div>
+                <div class="col-lg-2">@count item(s)</div>
+            </div>
+        </div>
+
+

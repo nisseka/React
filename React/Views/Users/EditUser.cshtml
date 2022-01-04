@@ -1,0 +1,17 @@
+﻿@model User
+
+@{
+    var editUserInputModel = new EditUserInputModel(Model);    // Create an input-model for use in the partial view EditUserPartial
+
+    if (Model != null)
+    {
+        ViewBag.Title = $"Edit user '{Model.UserName}'";
+        ViewBag.SelectedRole = Model.RolesString;
+    }
+    else
+    {
+        ViewBag.Title = "Edit user";
+    }
+}
+        <p></p>
+        <partial name="EditUserPartial" model="editUserInputModel" />

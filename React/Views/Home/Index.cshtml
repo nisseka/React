@@ -1,0 +1,24 @@
+﻿@model PeopleViewModel
+
+@{
+    ViewData["Title"] = "Home";
+}
+
+<p>Hello & welcome to my page</p>
+
+@{
+    if (User.Identity.IsAuthenticated)
+    {
+        if (User.IsInRole("Admin"))
+        {
+            <p>Hello Admin!</p>
+        }
+        if (User.IsInRole("User"))
+        {
+            <p>Hello User!</p>
+        }
+    } else
+    {
+        <p><a asp-area="Identity" asp-page="/Account/Register" asp-route-returnUrl="/Home/People">Register</a> to acess the site, or <a asp-area="Identity" asp-page="/Account/Login" asp-route-returnUrl="/Home/People">Login</a> if you already have an account</p>
+    }
+}

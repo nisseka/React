@@ -1,0 +1,48 @@
+﻿@using Microsoft.AspNetCore.Identity;
+@model EditUserInputModel
+
+<form class="form" id="EditPersonForm" asp-controller="Users" asp-action="EditUser" method="post">
+    <input asp-for="Id" type="hidden" value="@Model.Id" />
+    <label asp-for="UserName"></label>
+    <input class="formInputField" asp-for="UserName" required />
+    <label asp-for="FirstName"></label>
+    <input class="formInputField" asp-for="FirstName" required />
+    <label asp-for="LastName"></label>
+    <input class="formInputField" asp-for="LastName" required />
+    <label asp-for="Email"></label>
+    <input class="formInputField" asp-for="Email" required />
+    <label asp-for="BirthDate"></label>
+    <input class="formInputField" asp-for="BirthDate" required />
+    <label asp-for="PhoneNumber"></label>
+    <input class="formInputField" asp-for="PhoneNumber" />
+    <label asp-for="Password"></label>
+    <input class="formInputField" asp-for="Password" />
+    <label asp-for="RoleId"></label>
+    <select asp-for="RoleId" class="formInputField" required>
+        @{
+
+            string selectedRole = ViewBag.SelectedRole;
+
+            if (ViewBag.Roles != null)
+            {
+                // Build the role drop-down list from database table UserRoles:
+                foreach (IdentityRole role in ViewBag.Roles)
+                {
+                    if (selectedRole != null && selectedRole.Contains(role.Name))
+                    {
+                        <option value="@role.Id" selected>@role.Name</option>
+                    }
+                    else
+                    {
+                        <option value="@role.Id">@role.Name</option>
+                    }
+                }
+            }
+
+        }
+    </select>
+
+    <input class="formButton" type="submit" value="Save" />
+    <button class="formButton" type="button" onclick="history.back()">Cancel</button>
+</form>
+

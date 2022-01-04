@@ -1,0 +1,207 @@
+﻿body {
+    font-family: Consolas;
+    width: 1480px;
+    background-color: lightblue;
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    color: white;
+    font-size: large;
+}
+
+.ErrorMessage {
+    color: red;
+    font-weight: bolder;
+}
+
+/* 
+    Styles for header: 
+*/
+
+header {
+    display: flex;
+    border: 1px solid black;
+    background-color: dodgerblue;
+    align-items: center;
+    height: 70px;
+    border-radius: 8px;
+    padding: 5px 8px;
+}
+
+a:link {
+    color: #FFFFFF;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+a:hover {
+    text-decoration: underline;
+    color: #FF9900;
+}
+
+#TopLeftHeaderCell {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 10%;
+/*
+    padding-left: 10px;
+    height: 100%;
+*/
+}
+
+.headerNav {
+    display: flex;
+    width: 70%;
+    height: 100%;
+    align-items: center;
+    justify-content: space-between;
+    font-size: larger;
+}
+
+.headerLi {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 150px;
+}
+
+.headerUl {
+    display: flex;
+    height: 100%;
+}
+
+#TopRightHeaderCell {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+ /*    width: 20%;*/
+    height: 100%;
+    font-size: larger;
+}
+
+/* 
+    Styles for footer: 
+*/
+
+footer {
+    display: flex;
+    border: 1px solid black;
+    border-radius: 8px;
+    background-color: dodgerblue;
+    height: 50px;
+    align-items: center;
+    padding-left: 20px;
+    color: #FFFFFF;
+}
+
+/* 
+    Styles for main 
+*/
+
+.main {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid black;
+/*    background-color: #0066CC; */
+    background-color: #0C1D40;
+    border-radius: 8px;
+    padding: 5px 8px;
+    min-height: 500px;
+}
+
+.Title {
+    text-align: center;
+    font-weight: bolder;
+    border: 1px solid black;
+    border-radius: 8px;
+    background-color: dodgerblue;
+}
+
+/* 
+    General styles for forms
+*/
+
+.form {
+    border: 1px solid;
+    border-radius: 4px;
+    align-self: end;
+    padding: 5px 8px;
+}
+
+.formButton {
+    background-color: #4CAF50;
+    border: 1px solid black;
+    border-radius: 4px;
+    color: white;
+    padding: 5px 25px;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.formInputField {
+    padding: 6px 10px;
+    border: 2px solid;
+    border-radius: 4px;
+    color: black;
+}
+
+/* 
+    Styles for AJAX Index page: 
+*/
+#ActionButtons {
+    border-bottom: 1px solid white;
+}
+
+#PersonIDInput {
+    width: 100px;
+}
+
+/* 
+    Styles for partial view : 
+*/
+
+/* 
+    Styles for list of people table: 
+*/
+table {
+    border-spacing: 0px;
+    width: 90%;
+    align-self: center;
+}
+
+td, th {
+    padding: 2px;
+}
+
+.tableHeader {
+    background-color: #0066CC;
+    font-weight: bold;
+}
+
+.tableFooter {
+    background-color: #0066CC;
+}
+
+.tableRowEven {
+    background-color: #004080;
+}
+
+.tableRowOdd {
+    background-color: #003366;
+}
+
+.my-container {
+    width: 95%;
+}
+
+/* 
+    Styles for view 'EditPersonForm': 
+*/
+
+#EditPersonForm {
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    width: 40%;
+}

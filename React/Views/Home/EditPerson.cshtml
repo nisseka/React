@@ -1,0 +1,20 @@
+﻿@using React.Data; 
+@model Person
+
+@{
+    var editPersonViewModel = new EditPersonInputModel(Model);    // Create an input-model for use in the partial view EditPerson
+
+    if (Model != null)
+    {
+        ViewBag.SelectedCity = Model.City;
+        ViewBag.SelectedLanguages = Model.Languages;
+        ViewBag.Title = $"Edit person '{Model.Name}'";
+    }
+    else
+    {
+        ViewBag.Title = "Edit person";
+    }
+}
+
+
+        <partial name="EditPersonPartial" model="editPersonViewModel" />
